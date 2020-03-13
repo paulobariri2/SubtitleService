@@ -2,24 +2,28 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import os
+import configparser
 
 LOGIN_URL = "http://legendas.tv/login"
 SEARCH_URL = "http://legendas.tv/busca/"
 TITLE_URL = "http://legendas.tv/legenda/busca/-/1/-/0/"
 DOWNLOAD_URL = "http://legendas.tv/downloadarquivo/"
 
+config = configparser.ConfigParser()
+config.read('config.ini')
+
 headers = {
 	"User-Agent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.3"
 }
 
 proxies = {
-	"http":"",
-	"https":""
+	"http":config['PROXY']['http'],
+	"https":config['PROXY']['https']
 }
 
 payload = {
-        'data[User][username]':'username',
-        'data[User][password]':'password',
+        'data[User][username]':config['LOGIN']['username'],
+        'data[User][password]':config['LOGIN']['password'],
         'data[lembrar]':'on',
         '_method':'POST'
 }

@@ -4,6 +4,8 @@ Service to search and download subtitles in `legendas.tv` site.
 
 ## Usage
 
+Before start rename `config.ini.example`file to `config.ini` and populate with appropriate values.
+
 ### Search for titles
 
 **Definition**

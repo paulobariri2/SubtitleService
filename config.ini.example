@@ -1,0 +1,7 @@
+[LOGIN]
+username=<your username>
+password=<your password>
+
+[PROXY]
+http=
+https=

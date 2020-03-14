@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import json
 import os
 import configparser
+import zipfile
 
 LOGIN_URL = "http://legendas.tv/login"
 SEARCH_URL = "http://legendas.tv/busca/"
@@ -90,9 +91,10 @@ def downloadFile(subid, session):
         return resp.content
 
 def saveFile(content, filename):
-        print("Saving subtitle as " + filename)
-        with open(filename, 'wb') as file:
-                file.write(content)
+    print("Saving subtitle as " + filename)
+    with open(filename, 'wb') as file:
+        file.write(content)
+    return os.path.abspath(os.path.abspath(filename))
 
 def searchForTitles(title):
     print("Searching for " + title + " titles.")
@@ -118,7 +120,7 @@ def mapHtmlSubtitle2DictSubtitle(elements):
     for e in elements:
         sub = {}
         sub['number'] = e.find_all('span')[0].text
-        sub['class'] = e['class'][0]
+        sub['class'] = e.get('class')[0] if e.get('class') else ""
 
         for p in e.find_all('p'):
             if p.get('class') and p['class'][0] == 'data':
@@ -134,7 +136,7 @@ def mapHtmlSubtitle2DictSubtitle(elements):
     return subtitles
 
 def retrieveTitleSubtitles(titleId):
-    print("Searching for subtitles.")
+    print("Searching for subtitles: " + TITLE_URL + titleId)
     resp = requests.get(TITLE_URL+titleId, headers=headers, proxies=proxies)
     print("Search status: " + str(resp.status_code))
     soup = BeautifulSoup(resp.content, 'html.parser')
@@ -151,16 +153,27 @@ def retrieveTitleSubtitles(titleId):
     
     return subtitles
 
+def retrieveZipFileInfo(zipPath):
+    zipSubs = []
+    with zipfile.ZipFile(zipPath) as zip:
+        for f in zip.namelist():
+            if f.endswith('.srt'):
+                zipSubs.append(f)
+    return zipSubs
+
 def downloadSubtitle(subId, outputName):
     zipFile = outputName + ".zip"
     with requests.session() as session:
         loginLegendasTV(session)
         subfile = downloadFile(subId, session)
-        saveFile(subfile, zipFile)
+        absZipPath = saveFile(subfile, zipFile)
     resp = {}
     resp['fileName'] = zipFile
     resp['fileLocation'] = os.path.abspath(os.getcwd())
     resp['subtitleId'] = subId
+
+    zipSubs = retrieveZipFileInfo(absZipPath)
+    resp['subtitles'] = zipSubs
     return resp
 
 if __name__ == "__main__":

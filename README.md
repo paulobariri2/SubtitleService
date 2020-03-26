@@ -6,6 +6,16 @@ Service to search and download subtitles in `legendas.tv` site.
 
 Before start rename `config.ini.example`file to `config.ini` and populate with appropriate values.
 
+Create below environment variables.
+
+- `USERNAME=<legendas.tv login name>`
+- `PASSWORD=<legendas.tv password`
+
+Create below environment variables if proxy is needed.
+
+- `PROXY_HTTP=<http proxy>`
+- `PROXY_HTTPS=<https proxy>`
+
 ### Search for titles
 
 **Definition**

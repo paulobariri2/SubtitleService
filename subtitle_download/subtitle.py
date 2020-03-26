@@ -10,21 +10,18 @@ SEARCH_URL = "http://legendas.tv/busca/"
 TITLE_URL = "http://legendas.tv/legenda/busca/-/1/-/0/"
 DOWNLOAD_URL = "http://legendas.tv/downloadarquivo/"
 
-config = configparser.ConfigParser()
-config.read('config.ini')
-
 headers = {
 	"User-Agent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.3"
 }
 
 proxies = {
-	"http":config['PROXY']['http'],
-	"https":config['PROXY']['https']
+	"http":os.environ.get('PROXY_HTTP'),
+	"https":os.environ.get('PROXY_HTTPS')
 }
 
 payload = {
-        'data[User][username]':config['LOGIN']['username'],
-        'data[User][password]':config['LOGIN']['password'],
+        'data[User][username]':os.environ.get('USERNAME'),
+        'data[User][password]':os.environ.get('PASSWORD'),
         'data[lembrar]':'on',
         '_method':'POST'
 }

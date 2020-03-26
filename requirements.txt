@@ -1,0 +1,5 @@
+Flask==1.0
+flask-restful==0.3.6
+psutil
+bs4
+requests

@@ -9,7 +9,7 @@ Before start rename `config.ini.example`file to `config.ini` and populate with a
 Create below environment variables.
 
 - `USERNAME=<legendas.tv login name>`
-- `PASSWORD=<legendas.tv password`
+- `PASSWORD=<legendas.tv password>`
 
 Create below environment variables if proxy is needed.
 

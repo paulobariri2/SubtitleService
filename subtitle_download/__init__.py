@@ -3,8 +3,10 @@ from flask_restful import Resource, Api, reqparse
 from .subtitle import searchForTitles
 from .subtitle import retrieveTitleSubtitles
 from .subtitle import downloadSubtitle
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 api = Api(app)
 

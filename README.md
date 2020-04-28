@@ -97,8 +97,16 @@ ZIP file will be saved in current workspace directory.
 
 ```json
 {
-  "fileName": "Law.and.Order.SVU.S21E02.HDTV.x264-KILLERS-AFG-LucidTV-ION10-PSA-BAMBOOZLE-NTb.zip",
-  "fileLocation": "C:\\Users\\paulodua\\Documents\\python\\SubtitleService",
-  "subtitleId": "5d9c1ef87ded6"
+    "fileName": "This.Is.Us.S04E14.HDTV.x264-KILLERS-AFG-ION10-KiNGS.zip",
+    "fileLocation": "/usr/src/app",
+    "subtitleId": "5e53bc8eac7e3",
+    "subtitles": [
+        "legendas_tv_20200224120747878/This.Is.Us.S04E14.720p.HDTV.x264-KILLERS.srt",
+        "legendas_tv_20200224120747878/This.Is.Us.S04E14.HDTV.x264-KILLERS.srt",
+        "legendas_tv_20200224120747878/This.Is.Us.S04E14.The.Cabin.1080p.AMZN.WEB-DL.DDP5.1.H.264-KiNGS.srt",
+        "legendas_tv_20200224120747878/This.Is.Us.S04E14.The.Cabin.720p.AMZN.WEB-DL.DDP5.1.H.264-KiNGS.srt",
+        "legendas_tv_20200224120747878/This.Is.Us.S04E14.WEBRip.x264-ION10.srt",
+        "legendas_tv_20200224120747878/This.Is.Us.S04E14.XviD-AFG.srt"
+    ]
 }
 ```
